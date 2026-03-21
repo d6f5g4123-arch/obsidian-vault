@@ -39,7 +39,14 @@ $$
 P(B_1 B_2 \dots B_n | A) = P(B_1 | A) P(B_2 | B_1 A) \dots P(B_n | B_1 B_2 \dots B_{n-1} A).
 $$
 
-**推导**（归纳法）：
+**公式**：
+$$
+\begin{aligned}
+P(B_1 B_2) &= P(B_1) \cdot P(B_2 | B_1).
+\end{aligned}
+$$
+
+**推导（归纳法）**：
 1.  **基础**：当 $n=2$ 时，有 $P(B_1 B_2 | A) = P(B_1 | A) \cdot P(B_2 | B_1 A)$。
 2.  **归纳假设**：设 $n=k-1$ 时公式成立，即：
     $$
@@ -74,10 +81,21 @@ $$
     $$
 
 2.  **方差**：
+    由全方差公式（Law of Total Variance）：
+    $$
+    \operatorname{Var}(S_N) = \operatorname{E}[\operatorname{Var}(S_N | N)] + \operatorname{Var}[\operatorname{E}(S_N | N)]
+    $$
+    其中：
     $$
     \begin{aligned}
-    \operatorname{Var}(S_N) &= \operatorname{E}[\operatorname{Var}(S_N | N)] + \operatorname{Var}[\operatorname{E}(S_N | N)] \quad \text{(条件方差公式)} \\
-    &= \operatorname{E}[N \cdot \sigma^2] + \operatorname{Var}[N \cdot \mu] \quad \text{(给定 $N=n$ 时，$S_n$ 的方差为 $n\sigma^2$，期望为 $n\mu$)} \\
+    \operatorname{Var}(S_N | N = n) &= n \cdot \sigma^2 \\
+    E(S_N | N) &= N \cdot \mu
+    \end{aligned}
+    $$
+    代入得：
+    $$
+    \begin{aligned}
+    \operatorname{Var}(S_N) &= \operatorname{E}[N \cdot \sigma^2] + \operatorname{Var}[N \cdot \mu] \\
     &= \sigma^2 \cdot \operatorname{E}(N) + \mu^2 \cdot \operatorname{Var}(N)
     \end{aligned}
     $$
@@ -105,4 +123,5 @@ $$
 $$
 P (U < X_1 \mid X_1 + X_2 = t) = \frac{1}{2}.
 $$
-```
+
+> 🔄 AI合并更新：2026-03-21
